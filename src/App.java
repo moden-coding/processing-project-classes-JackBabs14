@@ -34,7 +34,7 @@ public class App extends PApplet{
         else {test.draw();}
 
         if (keyPressed) {
-            if (key == 'p') {
+            if (key == ENTER && test0.lvlOver() == true) {
                 lvl++;
             }
             

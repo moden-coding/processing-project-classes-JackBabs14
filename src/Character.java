@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 
 public class Character {
@@ -6,14 +8,21 @@ public class Character {
     private int y;
     private int speed;
     private int screen;
+    private int width;
+    private int length;
+    private int[] hitbox;
     
 
     public Character(PApplet c) {
         canvas = c;
-        x = 370;
-        y = 345;
+        x = 370; // total width 60
+        y = 345; // total hight 110
         speed = 7;
         screen = 4;
+        length = 110;
+        width = 60; 
+        hitbox = new int[4];
+        
     }
 
     public void draw() {
@@ -229,10 +238,22 @@ public class Character {
             y = 700;
         }
     } 
+    updateHitbox();
     }
 
     public int thisScreen() {
         return screen;
+    }
+
+    public void updateHitbox(){
+        hitbox[0] = x - (width / 2);  
+        hitbox[1] = y - (length / 2);  
+        hitbox[2] = hitbox[0] + width; 
+        hitbox[3] = hitbox[1] + length;
+    }
+
+    public int[] hitbox() {
+        return hitbox;
     }
 
 

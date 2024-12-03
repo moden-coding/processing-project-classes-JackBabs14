@@ -4,11 +4,17 @@ public class Instructor {
     private PApplet canvas;
     private int x;
     private int y;
+    private int[] range;
 
     public Instructor (PApplet c) {
         canvas = c;
         this.x = 100;
         this.y = 600;
+        range = new int[4];
+        range[0] = x - 30;
+        range[1] = y - 80;
+        range[2] = x + 95;
+        range[3] = y + 190; 
     }
 
     public void draw() {

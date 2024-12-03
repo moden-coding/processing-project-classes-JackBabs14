@@ -4,11 +4,13 @@ public class Lvl1 {
     private PApplet canvas;
     private Character bob;
     private Instructor guy;
+    private Portal portal;
 
     public Lvl1 (PApplet c) {
         canvas = c;
         bob = new Character(c);
         guy = new Instructor(c);
+        portal = new Portal(c);
     }
 
     public void draw() {
@@ -28,6 +30,7 @@ public class Lvl1 {
         if (bob.thisScreen() == 4) {
             canvas.background(0, 255, 0);
             guy.draw();
+            portal.draw();
         }
         if (bob.thisScreen() == 5) {
             canvas.background(255, 255, 0);
