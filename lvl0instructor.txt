@@ -1,0 +1,14 @@
+Well hello there, Bob. It appears we both somehow got stuck in this puzzle.
+Do not worry, I have been here before, I know how we escape
+Since last April when I fought those dinosaurs I have not been able to move my arms or legs so I will tell you what to do.
+I forget how many levels there are, but once I am in them I will know how to solve it.
+At the start of each level come to me and I will tell you what to do.
+
+This puzzle world consists of a 3x3 grid of screens, which you can walk into.
+You are currently in the middle screen, you should go walk around and explore the world.
+To move from level to level, once you complete the mission you simply need to stand in the purple circle and press enter.
+This is the introduction level, so there is no challenge. 
+Once you have familiarized yourself with the map, feel free to move on to the first level. I will be waiting for you.
+
+
+'to exit dialogue, press the space bar'

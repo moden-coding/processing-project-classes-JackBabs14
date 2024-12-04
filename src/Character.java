@@ -11,17 +11,19 @@ public class Character {
     private int width;
     private int length;
     private int[] hitbox;
+    private boolean talking;
     
 
-    public Character(PApplet c) {
+    public Character(PApplet c, boolean dialogue) {
         canvas = c;
-        x = 370; // total width 60
-        y = 345; // total hight 110
+        x = 385; 
+        y = 335; 
         speed = 7;
         screen = 4;
-        length = 110;
+        length = 130;
         width = 60; 
         hitbox = new int[4];
+        talking = dialogue;
         
     }
 
@@ -55,14 +57,15 @@ public class Character {
         canvas.ellipse(15, -30, 5, 5);
         canvas.ellipse(7, -10, 3, 3);
         canvas.ellipse(23, -10, 3, 3);
-
         canvas.popMatrix();
     }
 
     public void handleMovements() {
-        if (canvas.keyPressed) {
+        if (!talking) {
+            if (canvas.keyPressed) {
             if (canvas.key == 'a' || canvas.key == 'A' || canvas.keyCode == canvas.LEFT) {
                 this.x -= speed;
+                
             }
             if (canvas.key == 'd' || canvas.key == 'D' || canvas.keyCode == canvas.RIGHT) {
                 this.x += speed;
@@ -238,6 +241,7 @@ public class Character {
             y = 700;
         }
     } 
+}
     updateHitbox();
     }
 
@@ -246,14 +250,23 @@ public class Character {
     }
 
     public void updateHitbox(){
-        hitbox[0] = x - (width / 2);  
-        hitbox[1] = y - (length / 2);  
+        hitbox[0] = x - 15;  
+        hitbox[1] = y - 30;  
         hitbox[2] = hitbox[0] + width; 
         hitbox[3] = hitbox[1] + length;
     }
 
     public int[] hitbox() {
         return hitbox;
+    }
+
+    public void getTalking(boolean ddialogue) {
+        this.talking = ddialogue;
+    }
+
+    public void getCoords(int xcoord, int ycoord){
+        this.x = xcoord;
+        this.y = ycoord;
     }
 
 

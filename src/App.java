@@ -4,9 +4,6 @@ public class App extends PApplet{
     Lvl0 test0;
     Lvl1 test;
     int lvl = 0;
-    int startx = 370;
-    int starty = 345;
-    int startScreen = 4;
     public static void main(String[] args)  {
         PApplet.main("App");
        

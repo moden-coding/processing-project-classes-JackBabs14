@@ -8,7 +8,7 @@ public class Lvl1 {
 
     public Lvl1 (PApplet c) {
         canvas = c;
-        bob = new Character(c);
+        bob = new Character(c, false);
         guy = new Instructor(c);
         portal = new Portal(c);
     }
