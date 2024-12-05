@@ -40,14 +40,57 @@ public class Lvl0 {
         canvas.background(0);
         character = bob.hitbox();
         instructor = guy.getRange();
+        canvas.strokeWeight(2);
         if (bob.thisScreen() == 0) {
+            int y = 25;
             canvas.background(0, 255, 0);
+            canvas.fill(150);
+            canvas.rect(0, 0, 800, 400);
+            canvas.stroke(255, 255, 0);
+            canvas.strokeWeight(5);
+            canvas.line(y, 50, 5*y, 50);
+            canvas.line(y, 50, y, 250);
+            canvas.line(5*y, 50, 5*y, 250);
+            canvas.line(7*y, 50, 11*y, 50);
+            canvas.line(7*y, 50, 7*y, 250);
+            canvas.line(11*y, 50, 11*y, 250);
+            canvas.line(13*y, 50, 17*y, 50);
+            canvas.line(13*y, 50, 13*y, 250);
+            canvas.line(17*y, 50, 17*y, 250);
+            canvas.line(19*y, 50, 23*y, 50);
+            canvas.line(19*y, 50, 19*y, 250);
+            canvas.line(23*y, 50, 23*y, 250);
+            canvas.line(25*y, 50, 29*y, 50);
+            canvas.line(25*y, 50, 25*y, 250);
+            canvas.line(29*y, 50, 29*y, 250);
+
         }
         if (bob.thisScreen() == 1) {
             canvas.background(0, 255, 0);
+            canvas.fill(150);
+            canvas.beginShape();
+            canvas.vertex(0, 450);
+            canvas.vertex(0, 350);
+            canvas.vertex(800, 350);
+            canvas.vertex(800, 450);
+            canvas.vertex(450, 450);
+            canvas.vertex(450, 800);
+            canvas.vertex(350, 800);
+            canvas.vertex(350, 450);
+            canvas.vertex(0, 450);
+            canvas.endShape();
         }
         if (bob.thisScreen() == 2) {
             canvas.background(0, 255, 0);
+            canvas.fill(150);
+            canvas.beginShape();
+            canvas.vertex(0,350);
+            canvas.vertex(450, 350);
+            canvas.vertex(450, 800);
+            canvas.vertex(350, 800);
+            canvas.vertex(350, 450);
+            canvas.vertex(0, 450);
+            canvas.endShape();
         }
         if (bob.thisScreen() == 3) {
             canvas.background(0, 255, 0);
@@ -126,7 +169,6 @@ public class Lvl0 {
             }
             if (canvas.keyPressed && canvas.key == ' ') {
             diaOver = true;
-            dia1lines = true;
             }
         }
     }
