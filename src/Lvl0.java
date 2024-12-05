@@ -18,7 +18,7 @@ public class Lvl0 {
     private boolean diaOver;
     private boolean missionComplete;
     private String dia1;
-    private ArrayList<String> dia1lines;
+    private boolean dia1lines;
 
     public Lvl0(PApplet c) {
         gameOver = false;
@@ -33,8 +33,7 @@ public class Lvl0 {
         diaOver = false;
         missionComplete = false;
         dia1 = "lvl0instructor.txt";
-        dia1lines = new ArrayList<>();
-
+        dia1lines = false;
     }
 
     public void draw() {
@@ -85,6 +84,7 @@ public class Lvl0 {
             inRange = (character[2] > instructor[0] && character[0] < instructor[2] && character[3] > instructor[1] && character[1] < instructor[3]); 
         }else {
             inRange = false;
+            dia1lines = false;
         }      
      
         bob.getTalking(inRange);
@@ -107,20 +107,28 @@ public class Lvl0 {
             missionComplete = true;
         }
         if (dialogue) {
+            canvas.fill(0);
             canvas.rect(0, 0, 800, 800);
-            try (Scanner scanner1 = new Scanner(Paths.get(dia1))){
-            while (scanner1.hasNextLine()) {
-                String line = scanner1.nextLine();
-               dia1lines.add(line);
+            int y = 50;
+            canvas.textSize(15);
+            canvas.fill(255);
+            if (!dia1lines) {
+                try (Scanner scanner1 = new Scanner(Paths.get(dia1))) {
+                    while (scanner1.hasNextLine()) {
+                        String line = scanner1.nextLine();
+                        canvas.text(line, 20, y);
+                        y += 20;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error reading file: " + e.getMessage());
+                }
+                
             }
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-        System.out.println(dia1lines);
             if (canvas.keyPressed && canvas.key == ' ') {
-                diaOver = true; 
+            diaOver = true;
+            dia1lines = true;
             }
-        }   
+        }
     }
     
 
