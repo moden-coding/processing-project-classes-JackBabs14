@@ -24,7 +24,7 @@ public class Lvl0 {
         gameOver = false;
         inRange = false;
         canvas = c;
-        bob = new Character(c, inRange);
+        bob = new Character(c, inRange, 0);
         guy = new Instructor(c);
         first = new Portal(c);
         character = bob.hitbox();
@@ -93,7 +93,14 @@ public class Lvl0 {
             canvas.endShape();
         }
         if (bob.thisScreen() == 3) {
-            canvas.background(0, 255, 0);
+            canvas.background(196, 164, 132);
+            for (int x = 5; x < 800; x += 10){
+                for(int y = 5; y < 790; y += 15) {
+                    canvas.stroke(250, 250, 110);
+                    canvas.strokeWeight(5);
+                    canvas.line(x, y, x, y-10);
+                }
+            }
         }
         if (bob.thisScreen() == 4) {
             canvas.background(0, 255, 0);
@@ -102,15 +109,48 @@ public class Lvl0 {
         }
         if (bob.thisScreen() == 5) {
             canvas.background(0, 255, 0);
+            canvas.background(0, 255, 0);
+            canvas.fill(150);
+            canvas.beginShape();
+            canvas.vertex(500,450);
+            canvas.vertex(450, 450);
+            canvas.vertex(450, 800);
+            canvas.vertex(350, 800);
+            canvas.vertex(350, 0);
+            canvas.vertex(450, 0);
+            canvas.vertex(450, 350);
+            canvas.vertex(500, 350);
+            canvas.endShape();
+            canvas.fill(0,0,255);
+            canvas.ellipse(650, 400, 200, 200);
         }
         if (bob.thisScreen() == 6) {
             canvas.background(0, 255, 0);
+            for (int i = 25; i < 800; i += 50) {
+                for (int j = 25; j < 800; j += 50) {
+                canvas.fill(255, 0, 0);
+                canvas.ellipse(i, j, 20, 20);
+                canvas.stroke(1, 50, 32);
+                canvas.line(i, j+10, i, j+20);
+                }
+            }
         }
         if (bob.thisScreen() == 7) {
             canvas.background(0, 255, 0);
+            canvas.fill(0,0,255);
+            canvas.ellipse(400, 400, 550, 550);
         }
         if (bob.thisScreen() == 8) {
             canvas.background(0, 255, 0);
+            canvas.fill(150);
+            canvas.beginShape();
+            canvas.vertex(350,0);
+            canvas.vertex(350, 350);
+            canvas.vertex(0, 350);
+            canvas.vertex(0, 450);
+            canvas.vertex(450, 450);
+            canvas.vertex(450, 0);
+            canvas.endShape();
     }
     bob.draw();
     bob.handleMovements();

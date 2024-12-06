@@ -12,9 +12,10 @@ public class Character {
     private int length;
     private int[] hitbox;
     private boolean talking;
+    private int inv;
     
 
-    public Character(PApplet c, boolean dialogue) {
+    public Character(PApplet c, boolean dialogue, int inventory) {
         canvas = c;
         x = 385; 
         y = 335; 
@@ -24,6 +25,7 @@ public class Character {
         width = 60; 
         hitbox = new int[4];
         talking = dialogue;
+        inv = inventory;
         
     }
 
@@ -267,6 +269,10 @@ public class Character {
     public void getCoords(int xcoord, int ycoord){
         this.x = xcoord;
         this.y = ycoord;
+    }
+
+    public int getInv () {
+        return inv;
     }
 
 
