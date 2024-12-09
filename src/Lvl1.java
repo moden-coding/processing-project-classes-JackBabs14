@@ -27,6 +27,8 @@ public class Lvl1 {
     private boolean dialogue2;
     private boolean diaOver2;
     private boolean dia2lines;
+    private String dia2;
+
 
     public Lvl1 (PApplet c) {
         gameOver = false;
@@ -41,7 +43,7 @@ public class Lvl1 {
         dialogue = false;
         diaOver = false;
         missionComplete = false;
-        dia1 = "lvl0instructor.txt";
+        dia1 = "lvl1instructor.txt";
         dia1lines = false;
         ballPickup = false;
         ball = new Ball(c, 600, 600, false);
@@ -52,6 +54,8 @@ public class Lvl1 {
         dialogue2 = false;
         diaOver2 = false;
         dia2lines = false;
+        dia2 = "lvl1mission1.txt";
+      
     }
 
     public void draw() {
@@ -213,7 +217,7 @@ public class Lvl1 {
             canvas.textSize(15);
             canvas.fill(255);
             if (!dia1lines) {
-                try (Scanner scanner1 = new Scanner(Paths.get(dia1))) { // change lines
+                try (Scanner scanner1 = new Scanner(Paths.get(dia1))) { 
                     while (scanner1.hasNextLine()) {
                         String line = scanner1.nextLine();
                         canvas.text(line, 20, y);
@@ -267,7 +271,7 @@ public class Lvl1 {
                 canvas.textSize(15);
                 canvas.fill(255);
                 if (!dia2lines) {
-                    try (Scanner scanner1 = new Scanner(Paths.get(dia1))) { // change lines
+                    try (Scanner scanner1 = new Scanner(Paths.get(dia2))) { // change lines
                         while (scanner1.hasNextLine()) {
                             String line = scanner1.nextLine();
                             canvas.text(line, 20, y);
