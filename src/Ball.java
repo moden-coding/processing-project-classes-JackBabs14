@@ -21,11 +21,6 @@ public class Ball {
        if (!pickUp) {
         canvas.fill(222, 103, 21);
         canvas.ellipse(x, y, size, size);
-
-        canvas.noFill();
-        canvas.stroke(0);
-        canvas.strokeWeight(2);
-        canvas.rect(x - (size/2), y - (size/2), size, size);
        }
     }
 
@@ -35,6 +30,10 @@ public class Ball {
         hitbox[2] = (x + (size/2));
         hitbox[3] = (y + (size/2));
         return hitbox;
+    }
+
+    public void getPick(boolean getpick) {
+        this.pickUp = getpick;
     }
 }
 

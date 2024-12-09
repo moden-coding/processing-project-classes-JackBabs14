@@ -251,6 +251,10 @@ public class Character {
         return screen;
     }
 
+    public void getScreen(int screens) {
+        this.screen = screens;
+    }
+
     public void updateHitbox(){
         hitbox[0] = x - 15;  
         hitbox[1] = y - 30;  
