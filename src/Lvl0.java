@@ -20,8 +20,8 @@ public class Lvl0 {
     private String dia1;
     private boolean dia1lines;
 
-    public Lvl0(PApplet c) {
-        gameOver = false;
+    public Lvl0(PApplet c, boolean status) {
+        gameOver = status;
         inRange = false;
         canvas = c;
         bob = new Character(c, inRange, 0);
@@ -222,5 +222,9 @@ public class Lvl0 {
         }
         else {gameOver = false;}
         return gameOver;
+    }
+
+    public boolean getStatus () {
+        return this.gameOver;
     }
 }

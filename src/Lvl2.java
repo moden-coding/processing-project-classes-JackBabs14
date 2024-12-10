@@ -3,36 +3,28 @@ import java.util.Scanner;
 
 import processing.core.PApplet;
 
-public class Lvl1 {
+public class Lvl2 {
     private PApplet canvas;
     private Character bob;
     private Instructor guy;
-    private boolean gameOver;
     private Portal first;
+    private int inv;
     private int[] character;
-    private boolean inRange;
     private int[] instructor;
+    private boolean missionComplete;
+    private boolean gameOver;
+    private boolean inRange;
     private boolean dialogue;
     private boolean diaOver;
-    private boolean missionComplete;
-    private String dia1;
     private boolean dia1lines;
-    private Ball ball;
-    private boolean ballPickup;
-    private int inv;
-    private double[] hball;
-    private Mission1 dude;
-    private double[] mission1;
     private boolean inRange2;
     private boolean dialogue2;
     private boolean diaOver2;
     private boolean dia2lines;
-    private String dia2;
+    // private String dia1;
+    // private String dia2;
 
-
-    public Lvl1 (PApplet c, boolean status) {
-        gameOver = status;
-        inRange = false;
+    public Lvl2 (PApplet c, boolean status) {
         canvas = c;
         inv = 0;
         bob = new Character(c, inRange, inv);
@@ -40,22 +32,18 @@ public class Lvl1 {
         first = new Portal(c);
         character = bob.hitbox();
         instructor = guy.getRange();
+        missionComplete = false;
+        gameOver = status;
+        inRange = false;
         dialogue = false;
         diaOver = false;
-        missionComplete = false;
-        dia1 = "lvl1instructor.txt";
         dia1lines = false;
-        ballPickup = false;
-        ball = new Ball(c, 600, 600, false);
-        hball = ball.getHitbox();
-        dude = new Mission1(c, 700, 600);
-        mission1 = dude.getRange();
         inRange2 = false;
         dialogue2 = false;
         diaOver2 = false;
         dia2lines = false;
-        dia2 = "lvl1mission1.txt";
-      
+
+
     }
 
     public void draw() {
@@ -124,7 +112,6 @@ public class Lvl1 {
             canvas.background(0, 255, 0);
             guy.draw();
             first.draw();
-            ball.draw();
         }
         if (bob.thisScreen() == 5) {
             canvas.background(0, 255, 0);
@@ -158,7 +145,6 @@ public class Lvl1 {
             canvas.background(0, 255, 0);
             canvas.fill(0,0,255);
             canvas.ellipse(400, 400, 550, 550);
-            dude.draw();
         }
         if (bob.thisScreen() == 8) {
             canvas.background(0, 255, 0);
@@ -174,13 +160,7 @@ public class Lvl1 {
         }
         bob.draw();
         bob.handleMovements();
-        checkDia();
-        dialogue();    
-        ballPickUp();
-        checkDia2();
-        dialogue2();
-    
-        }
+    }
 
     public boolean checkDia(){
       if (bob.thisScreen() == 4) {
@@ -233,92 +213,4 @@ public class Lvl1 {
             }
         }
     }
-
-    public boolean checkDia2(){
-        if (inv == 1 && bob.thisScreen() == 7) {
-          
-              inRange2 = (character[2] > mission1[0] && character[0] < mission1[2] && character[3] > mission1[1] && character[1] < mission1[3]); 
-              
-          }else {
-              inRange2 = false;
-              dia2lines = false;
-          }      
-       
-          bob.getTalking(inRange2);
-          return inRange2;
-          } 
-
-    public void dialogue2() {
-            if (!inRange2 && diaOver2) {
-                diaOver2 = false;
-            }
-            if (inRange2 && !diaOver2) {
-                dialogue2 = true;
-            }else {
-                dialogue2 = false;
-            }
-            if (diaOver2) {
-                dialogue2 = false;
-                bob.getScreen(4);
-                bob.getCoords(385, 335);
-                bob.updateHitbox();
-                
-            }
-            if (dialogue2) {
-                canvas.fill(0);
-                canvas.rect(0, 0, 800, 800);
-                int y = 50;
-                canvas.textSize(15);
-                canvas.fill(255);
-                if (!dia2lines) {
-                    try (Scanner scanner1 = new Scanner(Paths.get(dia2))) { // change lines
-                        while (scanner1.hasNextLine()) {
-                            String line = scanner1.nextLine();
-                            canvas.text(line, 20, y);
-                            y += 20;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Error reading file: " + e.getMessage());
-                    }
-                    
-                }
-                if (canvas.keyPressed && canvas.key == ' ') {
-                diaOver2 = true;
-                missionComplete = true;
-                }
-            }
-        }
-    
-
-    public void  ballPickUp(){
-        if (bob.getInv() == 0) {
-            if(hball[0] > character[0] && hball[1] > character[1] && hball[2] < character[2] && hball[3] < character[3]) {
-                ballPickup = true;
-                inv = 1;
-                bob.getInv();
-                ball.getPick(ballPickup);
-            }
-        }
-    }
-    
-
-    public boolean lvlOver() {
-        boolean cTouchP = (character[0] > 300 && character[1] > 300 && character[2] < 500 && character[3] < 500);
-         
-        if(cTouchP && missionComplete) {
-            gameOver = true;
-        }
-        else {gameOver = false;}
-        return gameOver;
-    }
-
-    public boolean getStatus () {
-        return this.gameOver;
-    }
 }
-
-
-        
-    
-
- 
