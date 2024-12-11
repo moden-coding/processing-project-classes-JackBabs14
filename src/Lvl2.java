@@ -8,9 +8,14 @@ public class Lvl2 {
     private Character bob;
     private Instructor guy;
     private Portal first;
+    private Mission2 mission;
+    private Hammer hammer;
     private int inv;
+    private double[] mission2;
     private int[] character;
     private int[] instructor;
+    private int[] hammerHB;
+    private boolean hammerPickUp;
     private boolean missionComplete;
     private boolean gameOver;
     private boolean inRange;
@@ -30,8 +35,12 @@ public class Lvl2 {
         bob = new Character(c, inRange, inv);
         guy = new Instructor(c);
         first = new Portal(c);
+        mission = new Mission2(c, 450, 300);
+        hammerPickUp = false;
+        hammer = new Hammer(c, 600, 300, hammerPickUp);
         character = bob.hitbox();
         instructor = guy.getRange();
+        mission2 = mission.getRange();
         missionComplete = false;
         gameOver = status;
         inRange = false;
@@ -69,7 +78,8 @@ public class Lvl2 {
             canvas.line(23*y, 50, 23*y, 250);
             canvas.line(25*y, 50, 29*y, 50);
             canvas.line(25*y, 50, 25*y, 250);
-            canvas.line(29*y, 50, 29*y, 250);;
+            canvas.line(29*y, 50, 29*y, 250);
+            hammer.draw();
         }
         if (bob.thisScreen() == 1) {
             canvas.background(0, 255, 0);
@@ -110,6 +120,8 @@ public class Lvl2 {
         }
         if (bob.thisScreen() == 4) {
             canvas.background(0, 255, 0);
+            canvas.fill(0, 175, 0);
+            canvas.ellipse(650, 150, 50, 50);
             guy.draw();
             first.draw();
         }
@@ -129,6 +141,7 @@ public class Lvl2 {
             canvas.endShape();
             canvas.fill(0,0,255);
             canvas.ellipse(650, 400, 200, 200);
+            mission.draw();
         }
         if (bob.thisScreen() == 6) {
             canvas.background(0, 255, 0);
@@ -160,6 +173,8 @@ public class Lvl2 {
         }
         bob.draw();
         bob.handleMovements();
+
+        
     }
 
     public boolean checkDia(){
@@ -213,4 +228,86 @@ public class Lvl2 {
             }
         }
     }
-}
+
+    public boolean checkDia2(){
+        if (inv == 1 && bob.thisScreen() == 7) {
+          
+              inRange2 = (character[2] > mission2[0] && character[0] < mission2[2] && character[3] > mission2[1] && character[1] < mission2[3]); 
+              
+          }else {
+              inRange2 = false;
+              dia2lines = false;
+          }      
+       
+          bob.getTalking(inRange2);
+          return inRange2;
+          } 
+
+    public void dialogue2() {
+            if (!inRange2 && diaOver2) {
+                diaOver2 = false;
+            }
+            if (inRange2 && !diaOver2) {
+                dialogue2 = true;
+            }else {
+                dialogue2 = false;
+            }
+            if (diaOver2) {
+                dialogue2 = false;
+                bob.getScreen(4);
+                bob.getCoords(385, 355);
+                bob.updateHitbox();
+                
+            }
+            if (dialogue2) {
+                canvas.fill(0);
+                canvas.rect(0, 0, 800, 800);
+                int y = 50;
+                canvas.textSize(15);
+                canvas.fill(255);
+                if (!dia2lines) {
+                    try (Scanner scanner1 = new Scanner(Paths.get(dia2))) { // change lines
+                        while (scanner1.hasNextLine()) {
+                            String line = scanner1.nextLine();
+                            canvas.text(line, 20, y);
+                            y += 20;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Error reading file: " + e.getMessage());
+                    }
+                    
+                }
+                if (canvas.keyPressed && canvas.key == ' ') {
+                diaOver2 = true;
+                missionComplete = true;
+                }
+            }
+        }
+
+        public void  hammerPickUp(){
+            if (bob.getInv() == 0) {
+                if(hammerHB[0] > character[0] && hammerHB[1] > character[1] && hammerHB[2] < character[2] && hammerHB[3] < character[3]) {
+                    hammerPickUp = true;
+                    inv = 2;
+                    bob.getInv();
+                    hammer.getPick(hammerPickUp);
+                }
+            }
+        }
+        
+    
+        public boolean lvlOver() {
+            boolean cTouchP = (character[0] - 5 > 300 && character[1] - 5 > 300 && character[2] - 10 < 500 && character[3] - 10 < 500);
+             
+            if(cTouchP && missionComplete) {
+                gameOver = true;
+            }
+            else {gameOver = false;}
+            return gameOver;
+        }
+    
+        public boolean getStatus () {
+            return this.gameOver;
+        }
+    }
+

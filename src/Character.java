@@ -18,7 +18,7 @@ public class Character {
     public Character(PApplet c, boolean dialogue, int inventory) {
         canvas = c;
         x = 385; 
-        y = 335; 
+        y = 355; 
         speed = 7;
         screen = 4;
         length = 130;
@@ -256,10 +256,10 @@ public class Character {
     }
 
     public void updateHitbox(){
-        hitbox[0] = x - 15;  
-        hitbox[1] = y - 30;  
-        hitbox[2] = hitbox[0] + width; 
-        hitbox[3] = hitbox[1] + length;
+        hitbox[0] = x - 20;  
+        hitbox[1] = y - 35;  
+        hitbox[2] = hitbox[0] + width + 10; 
+        hitbox[3] = hitbox[1] + length + 10;
     }
 
     public int[] hitbox() {

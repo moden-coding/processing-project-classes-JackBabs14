@@ -259,8 +259,8 @@ public class Lvl1 {
             }
             if (diaOver2) {
                 dialogue2 = false;
-                bob.getScreen(4);
-                bob.getCoords(385, 335);
+                // bob.getScreen(4);
+                bob.getCoords(385, 355);
                 bob.updateHitbox();
                 
             }
@@ -291,19 +291,22 @@ public class Lvl1 {
     
 
     public void  ballPickUp(){
-        if (bob.getInv() == 0) {
-            if(hball[0] > character[0] && hball[1] > character[1] && hball[2] < character[2] && hball[3] < character[3]) {
-                ballPickup = true;
-                inv = 1;
-                bob.getInv();
-                ball.getPick(ballPickup);
+        if (bob.thisScreen() == 4) {
+            if (bob.getInv() == 0) {
+                if(hball[0] > character[0] && hball[1] > character[1] && hball[2] < character[2] && hball[3] < character[3]) {
+                    ballPickup = true;
+                    inv = 1;
+                    bob.getInv();
+                    ball.getPick(ballPickup);
+                }
             }
         }
+        
     }
     
 
     public boolean lvlOver() {
-        boolean cTouchP = (character[0] > 300 && character[1] > 300 && character[2] < 500 && character[3] < 500);
+        boolean cTouchP = (character[0] - 5 > 300 && character[1] - 5 > 300 && character[2] - 10 < 500 && character[3] - 10 < 500);
          
         if(cTouchP && missionComplete) {
             gameOver = true;

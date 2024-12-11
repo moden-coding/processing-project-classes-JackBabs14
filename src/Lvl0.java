@@ -185,7 +185,7 @@ public class Lvl0 {
         }
         if (diaOver) {
             dialogue = false;
-            bob.getCoords(385, 335);
+            bob.getCoords(385, 355);
             bob.updateHitbox();
             missionComplete = true;
         }
@@ -215,7 +215,7 @@ public class Lvl0 {
     
 
     public boolean lvlOver() {
-        boolean cTouchP = (character[0] > 300 && character[1] > 300 && character[2] < 500 && character[3] < 500);
+        boolean cTouchP = (character[0] - 5 > 300 && character[1] - 5 > 300 && character[2] - 10 < 500 && character[3] - 10 < 500);
          
         if(cTouchP && missionComplete) {
             gameOver = true;
