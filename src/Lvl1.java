@@ -36,7 +36,7 @@ public class Lvl1 {
         canvas = c;
         inv = 0;
         bob = new Character(c, inRange, inv);
-        guy = new Instructor(c);
+        guy = new Instructor(c, 100, 600);
         first = new Portal(c);
         character = bob.hitbox();
         instructor = guy.getRange();
@@ -296,7 +296,7 @@ public class Lvl1 {
                 if(hball[0] > character[0] && hball[1] > character[1] && hball[2] < character[2] && hball[3] < character[3]) {
                     ballPickup = true;
                     inv = 1;
-                    bob.getInv();
+                    bob.setInv(inv);
                     ball.getPick(ballPickup);
                 }
             }
@@ -308,7 +308,7 @@ public class Lvl1 {
     public boolean lvlOver() {
         boolean cTouchP = (character[0] - 5 > 300 && character[1] - 5 > 300 && character[2] - 10 < 500 && character[3] - 10 < 500);
          
-        if(cTouchP && missionComplete) {
+        if(cTouchP && missionComplete && bob.thisScreen() == 4) {
             gameOver = true;
         }
         else {gameOver = false;}

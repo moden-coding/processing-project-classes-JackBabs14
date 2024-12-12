@@ -50,13 +50,11 @@ public class App extends PApplet{
                     status = false;
                     test0.getStatus();
                     lvl++;
-                    System.out.println(lvl);
                 } else if (lvl == 1 && test.lvlOver()) {
                     lvlUp = true;
                     status = false;
                     test.getStatus();
                     lvl++;
-                    System.out.println(lvl);
                 }
             }
         }

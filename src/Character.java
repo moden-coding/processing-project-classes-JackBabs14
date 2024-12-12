@@ -25,7 +25,7 @@ public class Character {
         width = 60; 
         hitbox = new int[4];
         talking = dialogue;
-        inv = inventory;
+        this.inv = inventory;
         
     }
 
@@ -275,8 +275,12 @@ public class Character {
         this.y = ycoord;
     }
 
+    public void setInv (int invv) {
+        this.inv = invv;
+    }
+
     public int getInv () {
-        return inv;
+        return this.inv;
     }
 
 

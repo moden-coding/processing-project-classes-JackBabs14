@@ -19,13 +19,15 @@ public class Lvl0 {
     private boolean missionComplete;
     private String dia1;
     private boolean dia1lines;
+    private int inv;
 
     public Lvl0(PApplet c, boolean status) {
         gameOver = status;
+        inv = 0;
         inRange = false;
         canvas = c;
-        bob = new Character(c, inRange, 0);
-        guy = new Instructor(c);
+        bob = new Character(c, inRange, inv);
+        guy = new Instructor(c, 100, 600);
         first = new Portal(c);
         character = bob.hitbox();
         instructor = guy.getRange();
@@ -217,7 +219,7 @@ public class Lvl0 {
     public boolean lvlOver() {
         boolean cTouchP = (character[0] - 5 > 300 && character[1] - 5 > 300 && character[2] - 10 < 500 && character[3] - 10 < 500);
          
-        if(cTouchP && missionComplete) {
+        if(cTouchP && missionComplete && bob.thisScreen() == 4) {
             gameOver = true;
         }
         else {gameOver = false;}

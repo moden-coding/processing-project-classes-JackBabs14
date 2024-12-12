@@ -16,7 +16,7 @@ public class Hammer {
     }
 
     public void draw () {
-       if (!pickUp) {
+       if (!this.pickUp) {
         canvas.stroke(110, 38, 14);
         canvas.strokeWeight(5);
         canvas.line(x + 15, y + 15, x + 15, y + 45);
@@ -38,5 +38,6 @@ public class Hammer {
     public void getPick(boolean getpick) {
         this.pickUp = getpick;
     }
+    
 }
 

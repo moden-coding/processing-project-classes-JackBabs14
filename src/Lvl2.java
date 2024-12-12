@@ -26,14 +26,14 @@ public class Lvl2 {
     private boolean dialogue2;
     private boolean diaOver2;
     private boolean dia2lines;
-    // private String dia1;
-    // private String dia2;
+    private String dia1;
+    private String dia2;
 
     public Lvl2 (PApplet c, boolean status) {
         canvas = c;
         inv = 0;
         bob = new Character(c, inRange, inv);
-        guy = new Instructor(c);
+        guy = new Instructor(c, 100, 600);
         first = new Portal(c);
         mission = new Mission2(c, 450, 300);
         hammerPickUp = false;
@@ -41,6 +41,7 @@ public class Lvl2 {
         character = bob.hitbox();
         instructor = guy.getRange();
         mission2 = mission.getRange();
+        hammerHB = hammer.getHitbox();
         missionComplete = false;
         gameOver = status;
         inRange = false;
@@ -51,6 +52,8 @@ public class Lvl2 {
         dialogue2 = false;
         diaOver2 = false;
         dia2lines = false;
+        dia2 = "lvl2dia1.txt";
+        dia1 = "lvl2dia2.txt";
 
 
     }
@@ -79,6 +82,15 @@ public class Lvl2 {
             canvas.line(25*y, 50, 29*y, 50);
             canvas.line(25*y, 50, 25*y, 250);
             canvas.line(29*y, 50, 29*y, 250);
+            canvas.stroke(0);
+            canvas.strokeWeight(2);
+            canvas.fill(255, 0, 0);
+            canvas.rect(y + 10, 60, 80, 240);
+            canvas.fill(0);
+            canvas.rect(y+5, 100, 5, 15);
+            canvas.rect(y+5, 235, 5, 15);
+            canvas.rect(115, 100, 5, 15);
+            canvas.rect(115, 235, 5, 15);
             hammer.draw();
         }
         if (bob.thisScreen() == 1) {
@@ -173,7 +185,11 @@ public class Lvl2 {
         }
         bob.draw();
         bob.handleMovements();
-
+        checkDia();
+        dialogue();
+        hammerPickUp();
+        checkDia2();
+        dialogue2();
         
     }
 
@@ -230,7 +246,7 @@ public class Lvl2 {
     }
 
     public boolean checkDia2(){
-        if (inv == 1 && bob.thisScreen() == 7) {
+        if (inv == 2 && bob.thisScreen() == 5) {
           
               inRange2 = (character[2] > mission2[0] && character[0] < mission2[2] && character[3] > mission2[1] && character[1] < mission2[3]); 
               
@@ -254,8 +270,7 @@ public class Lvl2 {
             }
             if (diaOver2) {
                 dialogue2 = false;
-                bob.getScreen(4);
-                bob.getCoords(385, 355);
+                bob.getCoords(385, 555);
                 bob.updateHitbox();
                 
             }
@@ -266,7 +281,7 @@ public class Lvl2 {
                 canvas.textSize(15);
                 canvas.fill(255);
                 if (!dia2lines) {
-                    try (Scanner scanner1 = new Scanner(Paths.get(dia2))) { // change lines
+                    try (Scanner scanner1 = new Scanner(Paths.get(dia2))) { 
                         while (scanner1.hasNextLine()) {
                             String line = scanner1.nextLine();
                             canvas.text(line, 20, y);
@@ -285,21 +300,25 @@ public class Lvl2 {
         }
 
         public void  hammerPickUp(){
-            if (bob.getInv() == 0) {
+            if (bob.thisScreen() == 0) {
+                if (bob.getInv() == 0) {
                 if(hammerHB[0] > character[0] && hammerHB[1] > character[1] && hammerHB[2] < character[2] && hammerHB[3] < character[3]) {
                     hammerPickUp = true;
                     inv = 2;
-                    bob.getInv();
+                    bob.setInv(inv);
                     hammer.getPick(hammerPickUp);
+                }
                 }
             }
         }
+        
+       
         
     
         public boolean lvlOver() {
             boolean cTouchP = (character[0] - 5 > 300 && character[1] - 5 > 300 && character[2] - 10 < 500 && character[3] - 10 < 500);
              
-            if(cTouchP && missionComplete) {
+            if(cTouchP && missionComplete && bob.thisScreen() == 4) {
                 gameOver = true;
             }
             else {gameOver = false;}

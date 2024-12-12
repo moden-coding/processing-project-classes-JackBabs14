@@ -6,10 +6,10 @@ public class Instructor {
     private int y;
     private int[] range;
 
-    public Instructor (PApplet c) {
+    public Instructor (PApplet c, int xcoord, int ycoord) {
         canvas = c;
-        this.x = 100;
-        this.y = 600;
+        this.x = xcoord; 
+        this.y = ycoord;
         range = new int[4];
     }
 
