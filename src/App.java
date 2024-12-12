@@ -4,6 +4,7 @@ public class App extends PApplet{
     Lvl0 test0;
     Lvl1 test;
     Lvl2 test2;
+    lvl3 test3;
     int lvl = 0;
     boolean lvlUp;
     boolean status;
@@ -19,6 +20,7 @@ public class App extends PApplet{
         test0 = new Lvl0(this, status);
         test = new Lvl1(this, status);
         test2 = new Lvl2(this, status);
+        test3 = new lvl3(this, status);
         
         
         
@@ -40,6 +42,10 @@ public class App extends PApplet{
         if (lvl == 2) {
             test2.draw();
         }
+        if (lvl == 3) {
+            test3.draw();
+        }
+
         
 
         if (keyPressed) {
@@ -55,7 +61,17 @@ public class App extends PApplet{
                     status = false;
                     test.getStatus();
                     lvl++;
+                } else if (lvl == 2 && test.lvlOver()) {
+                    lvlUp = true;
+                    status = false;
+                    test.getStatus();
+                    lvl++;
                 }
+            }
+
+            if( key == 'q' && !lvlUp) { 
+                lvlUp = true;
+                lvl++;
             }
         }
 

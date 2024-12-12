@@ -19,6 +19,8 @@ public class Ball {
 
     public void draw () {
        if (!pickUp) {
+        canvas.stroke(0);
+        canvas.strokeWeight(2);
         canvas.fill(222, 103, 21);
         canvas.ellipse(x, y, size, size);
        }
