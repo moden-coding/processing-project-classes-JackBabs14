@@ -26,7 +26,7 @@ public class Lvl0 {
         inv = 0;
         inRange = false;
         canvas = c;
-        bob = new Character(c, inRange, inv);
+        bob = new Character(c, inRange, inv, 385, 355);
         guy = new Instructor(c, 100, 600);
         first = new Portal(c);
         character = bob.hitbox();

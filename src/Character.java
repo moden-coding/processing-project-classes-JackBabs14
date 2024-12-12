@@ -15,10 +15,10 @@ public class Character {
     private int inv;
     
 
-    public Character(PApplet c, boolean dialogue, int inventory) {
+    public Character(PApplet c, boolean dialogue, int inventory, int xcoord, int ycoord) {
         canvas = c;
-        x = 385; 
-        y = 355; 
+        this.x = xcoord; 
+        this.y = ycoord; 
         speed = 7;
         screen = 4;
         length = 130;

@@ -32,7 +32,7 @@ public class Lvl2 {
     public Lvl2 (PApplet c, boolean status) {
         canvas = c;
         inv = 0;
-        bob = new Character(c, inRange, inv);
+        bob = new Character(c, inRange, inv, 385, 355);
         guy = new Instructor(c, 100, 600);
         first = new Portal(c);
         mission = new Mission2(c, 450, 300);
