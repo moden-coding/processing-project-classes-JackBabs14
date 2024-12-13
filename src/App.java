@@ -1,6 +1,7 @@
 import processing.core.*;
 
 public class App extends PApplet{
+    //Initializing all the different levels, an int to track the level, a boolean to check the completed status of the levels, and a boolean to see if I should lvl up
     Lvl0 test0;
     Lvl1 test;
     Lvl2 test2;
@@ -34,6 +35,7 @@ public class App extends PApplet{
     }
 
     public void draw(){
+        //Drawing each level based on the int lvl
         background(100);
         if (lvl == 0) {
             test0.draw();
@@ -52,11 +54,13 @@ public class App extends PApplet{
         }
 
         
-
+// Level up mechanism
         if (keyPressed) {
            
             if (key == ENTER && !lvlUp) {
+                // when the enter key is pressed and it is not already in the process of changing levels.
                 if (lvl == 0 && test0.lvlOver()) {
+                    // same for each other level: if the give lvl is being drawn and is over it starts the lvl up process
                     lvlUp = true;
                     status = false;
                     test0.getStatus();
@@ -83,7 +87,7 @@ public class App extends PApplet{
         if (!keyPressed) {
             lvlUp = false;
         }
-        
+        // only allows it to level up once per enter key
        
 
     }
