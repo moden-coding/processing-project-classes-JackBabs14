@@ -78,11 +78,6 @@ public class App extends PApplet{
                     lvl++;
                 }
             }
-
-            if( key == 'q' && !lvlUp) { 
-                lvlUp = true;
-                lvl++;
-            }
         }
 
         if (!keyPressed) {
