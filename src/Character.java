@@ -14,7 +14,7 @@ public class Character {
     private boolean talking;
     private int inv;
     
-
+//initialize some variables that are not going to be changed by the other classes and some that will.
     public Character(PApplet c, boolean dialogue, int inventory, int xcoord, int ycoord) {
         canvas = c;
         this.x = xcoord; 
@@ -28,7 +28,7 @@ public class Character {
         this.inv = inventory;
         
     }
-
+// draws character
     public void draw() {
         canvas.pushMatrix();
         canvas.translate(x,y);
@@ -61,7 +61,7 @@ public class Character {
         canvas.ellipse(23, -10, 3, 3);
         canvas.popMatrix();
     }
-
+// different keys control the character's directions, only works if not talking
     public void handleMovements() {
         if (!talking) {
             if (canvas.keyPressed) {
@@ -79,6 +79,7 @@ public class Character {
                 this.y += speed;
             }
         }
+        // controls what happens when the character hits the bounderies, updates scren to keep track of them, making the game a 3x3 grid
         else if (screen == 0) {
             if (x < 15) {
                 x = 15;
@@ -243,42 +244,42 @@ public class Character {
             y = 700;
         }
     } 
-}
+}// character's hitbox gets updated constantly
     updateHitbox();
     }
-
+// makes the screen visible to other classes
     public int thisScreen() {
         return screen;
     }
-
+// makes the screen changeable by other classes
     public void getScreen(int screens) {
         this.screen = screens;
     }
-
+// character hitbox updates when he moves.
     public void updateHitbox(){
         hitbox[0] = x - 20;  
         hitbox[1] = y - 35;  
         hitbox[2] = hitbox[0] + width + 10; 
         hitbox[3] = hitbox[1] + length + 10;
     }
-
+// hitbox is visible by other classes.
     public int[] hitbox() {
         return hitbox;
     }
-
+// sees if the character is talking
     public void getTalking(boolean ddialogue) {
         this.talking = ddialogue;
     }
-
+// makes the characters coordinates within a secific screen changeable by another class after initialization.
     public void getCoords(int xcoord, int ycoord){
         this.x = xcoord;
         this.y = ycoord;
     }
-
+// inventory is changeable by other classes
     public void setInv (int invv) {
         this.inv = invv;
     }
-
+// inventory is visible by other classes
     public int getInv () {
         return this.inv;
     }

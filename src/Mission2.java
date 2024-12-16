@@ -1,6 +1,6 @@
 
 import processing.core.PApplet;
-
+// Based entirely off the code for the first Mission NPC.
 public class Mission2 {
     private PApplet canvas;
     private int x;
@@ -19,7 +19,7 @@ public class Mission2 {
         hitbox[3] = y + 110;
         hasBall = false;
     }
-
+// all the code is exactly the same except the color of the character's shirt and his eye facing the opposite direction.
     public void draw(){
         canvas.strokeWeight(2);
         canvas.fill(204, 150, 87);

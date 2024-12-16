@@ -1,5 +1,5 @@
 import processing.core.PApplet;
-
+// A lot of this stuff is just copied and pasted from the ball or uses very similar code
 public class Hammer {
     private PApplet canvas;
     private int x;
@@ -14,7 +14,7 @@ public class Hammer {
         hitbox = new int[4];
         this.pickUp = pickedUp;
     }
-
+// the only major difference is the shape, instead of a ball shape it is a hammer shape.
     public void draw () {
        if (!this.pickUp) {
         canvas.stroke(110, 38, 14);

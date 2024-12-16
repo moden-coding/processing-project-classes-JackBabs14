@@ -1,12 +1,12 @@
 import processing.core.PApplet;
-
+// Based heavily off the code for the Instructor
 public class Mission1 {
     private PApplet canvas;
     private int x;
     private int y;
     private double[] hitbox;
     private boolean hasBall;
-
+// unlike the instructor, this NPC needs an object, so a boolean is added to check if it has it. Also the range gets initialized
     public Mission1(PApplet c, int xcoord, int ycoord) {
         canvas = c;
         x = xcoord;
@@ -29,7 +29,7 @@ public class Mission1 {
         canvas.ellipse(x + 5, y - 30, 5, 5);
 
     }
-
+// makes range visible by other classes
     public double[] getRange() {
         return hitbox;
     }
