@@ -4,7 +4,7 @@ import java.util.Scanner;
 import javax.sound.sampled.Port;
 
 import processing.core.PApplet;
-
+// This is the conclusion, there are no objects and missions, just the character and instructor like in lvl0.
 public class Conclustion {
     private PApplet canvas;
     private Character bob;
@@ -30,6 +30,7 @@ public class Conclustion {
         diaOver = false;
         dia1lines = false;
         dia1 = "endDia.txt";   
+        // basically the exact same as lvl0 except there is nothing created to end the level because this is the final one.
     }
 
     public void draw() {
@@ -153,7 +154,7 @@ public class Conclustion {
     
     checkDia();
     dialogue();
-
+// basically the exact same as the introduction level
     
     }
 
@@ -207,6 +208,6 @@ public class Conclustion {
             }
         }
     }
-    
+    // ends after the dialogue, no objects to handle picking up and no way to end the level becase the game is over.
 
 }

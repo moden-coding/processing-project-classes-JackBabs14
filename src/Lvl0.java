@@ -11,18 +11,20 @@ public class Lvl0 {
     private Instructor guy;
     private boolean gameOver;
     private Portal first;
+    // initializes the canvas and the objects that will be used in this level
     private int[] character;
     private boolean inRange;
     private int[] instructor;
+    // hitbox of character and of the instructor, and the boolean seeing if they are in the range
     private boolean dialogue;
     private boolean diaOver;
-    private boolean missionComplete;
+    private boolean missionComplete; // checks to see if the mission per leel is complete
     private String dia1;
     private boolean dia1lines;
-    private int inv;
-
+    private int inv; // sets the character inv
+// the rest are all related to dialogue
     public Lvl0(PApplet c, boolean status) {
-        gameOver = status;
+        gameOver = status; // this is so the status of whether the game is completed can be seen by other classes
         inv = 0;
         inRange = false;
         canvas = c;
@@ -154,15 +156,16 @@ public class Lvl0 {
             canvas.vertex(450, 0);
             canvas.endShape();
     }
+    // draws the background for the levels as well as the objects that will be in each screen
     bob.draw();
     bob.handleMovements();
-    
+    // draws the character and allow him to be moved
     checkDia();
     dialogue();
-
+// allows dialogue workds
     
     }
-
+// Checks to see if the character is within range of the instructor and then sets boolean in range to true
     public boolean checkDia(){
       if (bob.thisScreen() == 4) {
         
@@ -175,7 +178,11 @@ public class Lvl0 {
         bob.getTalking(inRange);
         return inRange;
         } 
-        
+       // has the boolean in range to see if it should start the dialogue
+       // boolean dialogue is to see if the process is still ongoing
+       // diaover is to see if the dialogue is over
+       // dia1lines is to see if the lines are are the screen or not
+       // creates a rectangle while dialogue is true and displayes the text, then ending it by pressing space moves the character out of range and resets all the booleans so dialogue can be accessed again. 
     public void dialogue() {
         if (!inRange && diaOver) {
             diaOver = false;
@@ -214,8 +221,9 @@ public class Lvl0 {
             }
         }
     }
-    
+    // The mission in this level is just to talk to the guy and figure out what the game is about, once that is done the boolean missionOver is set to true
 
+    // If the character is on the portal and mission complete is true, this allows the character to move on to the next level
     public boolean lvlOver() {
         boolean cTouchP = (character[0] - 5 > 300 && character[1] - 5 > 300 && character[2] - 10 < 500 && character[3] - 10 < 500);
          
@@ -225,7 +233,7 @@ public class Lvl0 {
         else {gameOver = false;}
         return gameOver;
     }
-
+// allows the status to be seen by other classes
     public boolean getStatus () {
         return this.gameOver;
     }

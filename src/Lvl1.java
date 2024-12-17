@@ -2,7 +2,7 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 import processing.core.PApplet;
-
+//Lvl 0 serves as the base for all levels so a lot is comied from there
 public class Lvl1 {
     private PApplet canvas;
     private Character bob;
@@ -28,7 +28,7 @@ public class Lvl1 {
     private boolean diaOver2;
     private boolean dia2lines;
     private String dia2;
-
+// everything is the same as before except there is a ball, a mission guy, hitboxes for both, booleans to see if the ball is picked up, and second dialogue items so that there can be two seperate dialogues
 
     public Lvl1 (PApplet c, boolean status) {
         gameOver = status;
@@ -172,6 +172,7 @@ public class Lvl1 {
             canvas.vertex(450, 0);
             canvas.endShape();
         }
+        // draws background as well as ball and mission guy 
         bob.draw();
         bob.handleMovements();
         checkDia();
@@ -179,7 +180,7 @@ public class Lvl1 {
         ballPickUp();
         checkDia2();
         dialogue2();
-    
+    // same as before except it is constantly checking if the ball gets picked up and there are two dialogues.
         }
 
     public boolean checkDia(){
@@ -233,7 +234,7 @@ public class Lvl1 {
             }
         }
     }
-
+// first dialogue is exactly the same except it is no longer the end mission
     public boolean checkDia2(){
         if (inv == 1 && bob.thisScreen() == 7) {
           
@@ -271,7 +272,7 @@ public class Lvl1 {
                 canvas.textSize(15);
                 canvas.fill(255);
                 if (!dia2lines) {
-                    try (Scanner scanner1 = new Scanner(Paths.get(dia2))) { // change lines
+                    try (Scanner scanner1 = new Scanner(Paths.get(dia2))) { 
                         while (scanner1.hasNextLine()) {
                             String line = scanner1.nextLine();
                             canvas.text(line, 20, y);
@@ -288,8 +289,10 @@ public class Lvl1 {
                 }
             }
         }
-    
+    // Second dialogue is the same except it is for the mission guy and once you talk to him, the mission is over.
 
+    // if the character is in the right screen and has an empty inventory, it checks if the ball is within range
+    // if it is, the ball disapears and the characters inventory turns to '1'.
     public void  ballPickUp(){
         if (bob.thisScreen() == 4) {
             if (bob.getInv() == 0) {
@@ -301,7 +304,6 @@ public class Lvl1 {
                 }
             }
         }
-        
     }
     
 
@@ -318,6 +320,7 @@ public class Lvl1 {
     public boolean getStatus () {
         return this.gameOver;
     }
+    // last two methods the same as before
 }
 
 

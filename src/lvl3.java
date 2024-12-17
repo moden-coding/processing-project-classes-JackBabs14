@@ -39,7 +39,7 @@ public class lvl3 {
     private String dia1;
     private String dia2;
     private String dia3;
-
+// This combines the last two levels, now there is botha ball and a hamemer and there are two mission guys
     public lvl3 (PApplet c, boolean status) {
         canvas = c;
         inv = 0;
@@ -184,6 +184,7 @@ public class lvl3 {
                 if (missionFirst) {
                     hammer.draw();
                 }
+                // only draws the hammer once the first missin is done
             }
         }
         if (bob.thisScreen() == 7) {
@@ -214,7 +215,7 @@ public class lvl3 {
         hammerPickUp();
         checkDia3();
         dialogue3();
-        
+        // same as before except with 2 objects and 3 dialogues
     }
 
     public boolean checkDia(){
@@ -268,7 +269,7 @@ public class lvl3 {
             }
         }
     }
-
+// second dialogue checks if the character has the ball first, then resets inv to 0 after and it end the first mission in this level.
     public boolean checkDia2(){
         if (inv == 1 && bob.thisScreen() == 8) {
           
@@ -324,7 +325,7 @@ public class lvl3 {
                 }
             }
         }
-
+// checks if character has the hammer and if the first mission is done, ends by making the entire game mission complete.
         public boolean checkDia3(){
             if (inv == 2 && bob.thisScreen() == 0 && missionFirst) {
               
@@ -393,9 +394,8 @@ public class lvl3 {
                 }
             }
         }
-        
     }
-
+// Here there are both ball and hammer so both methods are needed, ball makes inventory '1' while hammer makes it '2'.
         public void  hammerPickUp(){
             if (bob.thisScreen() == 6 && missionFirst && bob.getInv() == 0 && bob.getInv() == 0) {
                 if(hammerHB[0] > character[0] && hammerHB[1] > character[1] && hammerHB[2] < character[2] && hammerHB[3] < character[3]) {
@@ -409,10 +409,6 @@ public class lvl3 {
             }
         
 
-        
-       
-        
-    
         public boolean lvlOver() {
             boolean cTouchP = (character[0] - 5 > 300 && character[1] - 5 > 300 && character[2] - 10 < 500 && character[3] - 10 < 500);
              
@@ -426,5 +422,6 @@ public class lvl3 {
         public boolean getStatus () {
             return this.gameOver;
         }
+        // gameover and status are the same as always.
     }
 

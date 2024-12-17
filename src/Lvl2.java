@@ -28,7 +28,7 @@ public class Lvl2 {
     private boolean dia2lines;
     private String dia1;
     private String dia2;
-
+// This time there is a hammer and mission guy 2
     public Lvl2 (PApplet c, boolean status) {
         canvas = c;
         inv = 0;
@@ -190,7 +190,7 @@ public class Lvl2 {
         hammerPickUp();
         checkDia2();
         dialogue2();
-        
+        // basically the exact same as the last level
     }
 
     public boolean checkDia(){
@@ -298,6 +298,7 @@ public class Lvl2 {
                 }
             }
         }
+        // same code just with misison guy 2 and about the hammer instead ofthe ball
 
         public void  hammerPickUp(){
             if (bob.thisScreen() == 0) {
@@ -311,7 +312,7 @@ public class Lvl2 {
                 }
             }
         }
-        
+        // same as with ball but with a hammer instead
        
         
     
@@ -328,5 +329,6 @@ public class Lvl2 {
         public boolean getStatus () {
             return this.gameOver;
         }
+        //same as before
     }
 
