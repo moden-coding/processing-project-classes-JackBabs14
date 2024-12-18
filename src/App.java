@@ -100,12 +100,15 @@ public class App extends PApplet{
     }
 
     public void finalTime() {
-    
+    double minutes = 0;
+    double seconds = 0;
     time = time - startTime;
-    time = time / 60000;
+    time = time / 1000;
+    seconds = time % 60;
+    minutes = ((time - seconds) / 60);
 
     String lastDia = "endDia.txt";
-    String writeTime = "This game took you " + time + " minutes to complete.";
+    String writeTime = "This game took you " + minutes + " minutes and " + seconds + " seconds to finish.";
 
     // Here chat gpt taught me how to add a line to a file without overriding it.
     try (FileWriter fw = new FileWriter(lastDia, true);  
