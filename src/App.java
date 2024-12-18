@@ -1,3 +1,7 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import processing.core.*;
 
 public class App extends PApplet{
@@ -10,6 +14,8 @@ public class App extends PApplet{
     int lvl = 0;
     boolean lvlUp;
     boolean status;
+    double startTime;
+    double time;
     public static void main(String[] args)  {
         PApplet.main("App");
        
@@ -65,6 +71,7 @@ public class App extends PApplet{
                     status = false;
                     test0.getStatus();
                     lvl++;
+                    startTime = millis();
                 } else if (lvl == 1 && test.lvlOver()) {
                     lvlUp = true;
                     status = false;
@@ -80,6 +87,8 @@ public class App extends PApplet{
                     status = false;
                     test.getStatus();
                     lvl++;
+                    time = millis();
+                    finalTime();
                 }
             }
         }
@@ -88,7 +97,24 @@ public class App extends PApplet{
             lvlUp = false;
         }
         // only allows it to level up once per enter key
-       
-
     }
+
+    public void finalTime() {
+    
+    time = time - startTime;
+    time = time / 60000;
+
+    String lastDia = "endDia.txt";
+    String writeTime = "This game took you " + time + " minutes to complete.";
+
+    // Here chat gpt taught me how to add a line to a file without overriding it.
+    try (FileWriter fw = new FileWriter(lastDia, true);  
+         PrintWriter writer = new PrintWriter(fw)) {
+        writer.println(writeTime);  
+        System.out.println("Time saved to file successfully.");
+    } catch (IOException e) {
+        System.out.println("An error occurred while writing to the file.");
+        e.printStackTrace();
+    }
+}
 }
