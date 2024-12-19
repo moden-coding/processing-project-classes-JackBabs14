@@ -1,4 +1,5 @@
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import processing.core.PApplet;
@@ -28,6 +29,7 @@ public class Lvl1 {
     private boolean diaOver2;
     private boolean dia2lines;
     private String dia2;
+    private ArrayList<Integer> visited;
 // everything is the same as before except there is a ball, a mission guy, hitboxes for both, booleans to see if the ball is picked up, and second dialogue items so that there can be two seperate dialogues
 
     public Lvl1 (PApplet c, boolean status) {
@@ -55,6 +57,7 @@ public class Lvl1 {
         diaOver2 = false;
         dia2lines = false;
         dia2 = "lvl1mission1.txt";
+        visited = bob.getVisited();
       
     }
 
@@ -311,16 +314,23 @@ public class Lvl1 {
         boolean cTouchP = (character[0] - 5 > 300 && character[1] - 5 > 300 && character[2] - 10 < 500 && character[3] - 10 < 500);
          
         if(cTouchP && missionComplete && bob.thisScreen() == 4) {
+            updateVisited();
+            System.out.println(this.visited);
             gameOver = true;
         }
         else {gameOver = false;}
         return gameOver;
     }
 
+    public void updateVisited() {
+        this.visited = bob.getVisited();
+    }
+
     public boolean getStatus () {
         return this.gameOver;
     }
-    // last two methods the same as before
+
+    // game over and get status same as before, this is the first real level so getvisited matters here.
 }
 
 

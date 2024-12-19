@@ -1,4 +1,5 @@
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import processing.core.PApplet;
@@ -28,6 +29,7 @@ public class Lvl2 {
     private boolean dia2lines;
     private String dia1;
     private String dia2;
+    private ArrayList<Integer> visited;
 // This time there is a hammer and mission guy 2
     public Lvl2 (PApplet c, boolean status) {
         canvas = c;
@@ -54,7 +56,7 @@ public class Lvl2 {
         dia2lines = false;
         dia2 = "lvl2dia1.txt";
         dia1 = "lvl2dia2.txt";
-
+        visited = bob.getVisited();
 
     }
 
@@ -320,10 +322,16 @@ public class Lvl2 {
             boolean cTouchP = (character[0] - 5 > 300 && character[1] - 5 > 300 && character[2] - 10 < 500 && character[3] - 10 < 500);
              
             if(cTouchP && missionComplete && bob.thisScreen() == 4) {
+                updateVisited();
+                System.out.println(this.visited);
                 gameOver = true;
             }
             else {gameOver = false;}
             return gameOver;
+        }
+    
+        public void updateVisited() {
+            this.visited = bob.getVisited();
         }
     
         public boolean getStatus () {

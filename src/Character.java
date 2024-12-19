@@ -13,6 +13,7 @@ public class Character {
     private int[] hitbox;
     private boolean talking;
     private int inv;
+    private ArrayList<Integer> visited;
     
 //initialize some variables that are not going to be changed by the other classes and some that will.
     public Character(PApplet c, boolean dialogue, int inventory, int xcoord, int ycoord) {
@@ -26,6 +27,7 @@ public class Character {
         hitbox = new int[4];
         talking = dialogue;
         this.inv = inventory;
+        visited = new ArrayList<>();
         
     }
 // draws character
@@ -87,6 +89,7 @@ public class Character {
             if (x > 755) {
                 x = 15;
                 screen += 1;
+                visited.add(screen);
             }
             if (y < 30) {
                 y = 30;
@@ -94,16 +97,19 @@ public class Character {
             if (y > 700) {
                 y = 30;
                 screen += 3;
+                visited.add(screen);
             }
         }
         else if (screen == 1) {
             if (x < 15) {
                 x = 755;
                 screen -= 1;
+                visited.add(screen);
             }
             if (x > 755) {
                 x = 15;
                 screen += 1;
+                visited.add(screen);
             }
             if (y < 30) {
                 y = 30;
@@ -111,12 +117,14 @@ public class Character {
             if (y > 700) {
                 y = 30;
                 screen += 3;
+                visited.add(screen);
             }
         }
         else if (screen == 2) {
             if (x < 15) {
                 x = 755;
                 screen -= 1;
+                visited.add(screen);
             }
             if (x > 755) {
                 x = 755;
@@ -127,6 +135,7 @@ public class Character {
             if (y > 700) {
                 y = 30;
                 screen += 3;
+                visited.add(screen);
             }
         }
         else if (screen == 3) {
@@ -136,38 +145,46 @@ public class Character {
             if (x > 755) {
                 x = 15;
                 screen += 1;
+                visited.add(screen);
             }
             if (y < 30) {
                 y = 700;
                 screen -=3;
+                visited.add(screen);
             }
             if (y > 700) {
                 y = 30;
                 screen += 3;
+                visited.add(screen);
             }
         }
         else if (screen == 4) {
             if (x < 15) {
                 x = 755;
                 screen -= 1;
+                visited.add(screen);
             }
             if (x > 755) {
                 x = 15;
                 screen += 1;
+                visited.add(screen);
             }
             if (y < 30) {
                 y = 700;
                 screen -=3;
+                visited.add(screen);
             }
             if (y > 700) {
                 y = 30;
                 screen += 3;
+                visited.add(screen);
             }
         }
         else if (screen == 5) {
             if (x < 15) {
                 x = 755;
                 screen -= 1;
+                visited.add(screen);
             }
             if (x > 755) {
                 x = 755;
@@ -175,10 +192,12 @@ public class Character {
             if (y < 30) {
                 y = 700;
                 screen -=3;
+                visited.add(screen);
             }
             if (y > 700) {
                 y = 30;
                 screen += 3;
+                visited.add(screen);
             }
         }
         else if (screen == 6) {
@@ -188,10 +207,12 @@ public class Character {
             if (x > 755) {
                 x = 15;
                 screen += 1;
+                visited.add(screen);
             }
             if (y < 30) {
                 y = 700;
                 screen -=3;
+                visited.add(screen);
             }
             if (y > 700) {
                 y = 700;
@@ -201,14 +222,17 @@ public class Character {
             if (x < 15) {
                 x = 755;
                 screen -= 1;
+                visited.add(screen);
             }
             if (x > 755) {
                 x = 15;
                 screen += 1;
+                visited.add(screen);
             }
             if (y < 30) {
                 y = 700;
                 screen -=3;
+                visited.add(screen);
             }
             if (y > 700) {
                 y = 700;
@@ -218,6 +242,7 @@ public class Character {
             if (x < 15) {
                 x = 755;
                 screen -= 1;
+                visited.add(screen);
             }
             if (x > 755) {
                 x = 755;
@@ -225,6 +250,7 @@ public class Character {
             if (y < 30) {
                 y = 700;
                 screen -=3;
+                visited.add(screen);
             }
             if (y > 700) {
                 y = 700;
@@ -282,6 +308,10 @@ public class Character {
 // inventory is visible by other classes
     public int getInv () {
         return this.inv;
+    }
+
+    public ArrayList<Integer> getVisited(){
+        return this.visited;
     }
 
 

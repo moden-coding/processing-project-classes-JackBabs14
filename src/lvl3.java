@@ -1,4 +1,5 @@
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import processing.core.PApplet;
@@ -39,6 +40,7 @@ public class lvl3 {
     private String dia1;
     private String dia2;
     private String dia3;
+     private ArrayList<Integer> visited;
 // This combines the last two levels, now there is botha ball and a hamemer and there are two mission guys
     public lvl3 (PApplet c, boolean status) {
         canvas = c;
@@ -72,7 +74,7 @@ public class lvl3 {
         dia1 = "lvl3dia1.txt";
         dia2 = "lvl3dia2.txt";
         dia3 = "lvl3dia3.txt";
-
+        visited = bob.getVisited();
 
     }
 
@@ -409,15 +411,21 @@ public class lvl3 {
             }
         
 
-        public boolean lvlOver() {
-            boolean cTouchP = (character[0] - 5 > 300 && character[1] - 5 > 300 && character[2] - 10 < 500 && character[3] - 10 < 500);
-             
-            if(cTouchP && missionComplete && bob.thisScreen() == 4) {
-                gameOver = true;
+            public boolean lvlOver() {
+                boolean cTouchP = (character[0] - 5 > 300 && character[1] - 5 > 300 && character[2] - 10 < 500 && character[3] - 10 < 500);
+                 
+                if(cTouchP && missionComplete && bob.thisScreen() == 4) {
+                    updateVisited();
+                    System.out.println(this.visited);
+                    gameOver = true;
+                }
+                else {gameOver = false;}
+                return gameOver;
             }
-            else {gameOver = false;}
-            return gameOver;
-        }
+        
+            public void updateVisited() {
+                this.visited = bob.getVisited();
+            }
     
         public boolean getStatus () {
             return this.gameOver;
