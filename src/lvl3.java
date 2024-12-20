@@ -416,7 +416,7 @@ public class lvl3 {
                  
                 if(cTouchP && missionComplete && bob.thisScreen() == 4) {
                     updateVisited();
-                    System.out.println(this.visited);
+                    System.out.println("You visited the follow screens in this order: " + this.visited);
                     gameOver = true;
                 }
                 else {gameOver = false;}
