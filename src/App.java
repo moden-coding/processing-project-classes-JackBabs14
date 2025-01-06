@@ -71,6 +71,22 @@ public class App extends PApplet{
                     status = false;
                     test0.getStatus();
                     lvl++;
+                    String endDia = "endDia.txt";
+                    try (FileWriter fw = new FileWriter(endDia, false);  
+                    PrintWriter writer = new PrintWriter(fw)) {
+                   writer.println("Bob, good job! You successfully beat the puzzle game!");  
+                   writer.println("Now if you want you can explore the world and play around, but if you prefer to leave you can too.");  
+                   writer.println("I hope you had fun completing these puzzles, I know I had fun helping you complete them.");  
+                   writer.println("It reminds me of our old adventures together...");  
+                   writer.println("...we really had fun when we were stealing the portal guns from those aliens, and their accents were so funny...");  
+                   writer.println("Sorry I was getting side-tracked.");  
+                   writer.println("I hope to see you again some day, good bye old friend!");  
+                   writer.println("");  
+                   System.out.println("Reset of Dialogue sucessful.");
+               } catch (IOException e) {
+                   System.out.println("An error occurred while writing to the file.");
+                   e.printStackTrace();
+               }
                     startTime = millis();
                 } else if (lvl == 1 && test.lvlOver()) {
                     lvlUp = true;
