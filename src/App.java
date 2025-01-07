@@ -67,6 +67,7 @@ public class App extends PApplet{
                 // when the enter key is pressed and it is not already in the process of changing levels.
                 if (lvl == 0 && test0.lvlOver()) {
                     // same for each other level: if the give lvl is being drawn and is over it starts the lvl up process
+                    // this level also resets the final dialogue
                     lvlUp = true;
                     status = false;
                     test0.getStatus();
